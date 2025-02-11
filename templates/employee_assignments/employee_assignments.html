@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h2 class="mt-4">Employee Assignments</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Assignment ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Location</th>
+                <th scope="col">Employee</th>
+                <th scope="col">Profession</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for assignment in assignments %}
+                {% for employee in assignment.employees %}
+                    <tr>
+                        <td>{{ assignment.id }}</td>
+                        <td>{{ assignment.title }}</td>
+                        <td>{{ assignment.location }}</td>
+                        <td>{{ employee.firstname }} {{ employee.lastname }}</td>
+                        <td>{{ employee.profession }}</td>
+                        <td>
+                            <a class="btn btn-warning" href="/editassignment/{{ assignment.id }}">Edit</a>
+                            <a class="btn btn-danger" href="/deleteassignment/{{ assignment.id }}">Remove</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    {% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }} 
+    {% endblock %}
+
+    <title>{% block title %}Employee Management{% endblock %}</title>
+    {% endblock %}
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Employee Management</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/employees">Employees</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/assignments">Assignments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/employee-assignments">Employee Assignments</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% if message %}
+    <div class="alert alert-warning alert-dismissible fade show m-3" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    <!-- Page Content -->
+    <div class="container mt-4">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    {% block scripts %}
+    <!-- Bootstrap JavaScript -->
+    {{ bootstrap.load_js() }}
+    {% endblock %}
+  </body>
+</html>
